@@ -28,34 +28,32 @@
 
 **Files**: `tasks/context-window-probe-extension.md`
 
-### 📋 PLANNED: memory-consolidator Gen1 (storage + retrieval)
-- Plan written: `memory/memory-consolidator/PLAN-GEN1.md`
-- Scope: candidates → SQLite → FTS5 retrieval
-- Anti-goals: no ontology, no vector search, no LLM extraction, no hierarchy
-- Migration path: 7 generations planned
-- Estimated: 6-7 days
+### ✅ DONE: memory-consolidator Gen1 (storage + retrieval)
+- SQLite database with FTS5 full-text search index + triggers
+- Memory dataclass with from_row/to_dict serialization
+- SimplePromoter: candidate → memory with provenance
+- Consolidator core: promote, reject, merge, search, CRUD, rebuild, health check
+- CLI interface (promote, search, list, get, archive, rebuild, health)
+- Pi extension adapter with 4 tools
+- **27 unit tests passing**
 
-**Files**: `memory/memory-consolidator/PLAN-GEN1.md`
+**Files**: `memory/memory-consolidator/src/`, `.pi/extensions/memory-consolidator/`
 
-### 🔜 NEXT: memory-consolidator Gen1 Implementation
-- Database schema + setup
-- Memory dataclass + schema parsing
-- SimplePromoter
-- Consolidator core
-- FTS5 search
-- CRUD operations
-- Rebuild + health check
-- CLI interface
-- Pi extension tools
-- Tests
+### 🔜 NEXT: memory-consolidator Gen2 (semantic search)
+- Add ONNX local embeddings
+- Vector index (SQLite or separate store)
+- Hybrid BM25 + vector ranking
+- Confidence scoring
+- Golden query evaluation
 
 ## Current Status
 
 | Component | Status | Tests |
 |---|---|---|
 | memory-inbox | ✅ Implemented | 13 passing |
-| memory-consolidator | 📋 Planned (Gen1) | — |
-| Pi extension adapter | ✅ Implemented | — |
+| memory-consolidator Gen1 | ✅ Implemented | 27 passing |
+| Pi extension adapter (inbox) | ✅ Implemented | — |
+| Pi extension adapter (consolidator) | ✅ Implemented | — |
 | Research | ✅ Complete | — |
 
 ## Deferred Features (documented in PLAN-GEN1.md)
