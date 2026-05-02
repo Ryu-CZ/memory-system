@@ -1,0 +1,34 @@
+scenario_id: 003-precompaction-session-summary
+decision: write_candidate
+candidate:
+  status: candidate
+  memory_type: episode
+  scope: project:/home/trval/projects/chats/pi_sandbox/memory
+  sensitivity: ordinary
+  source: agent_summary
+  source_agent: main-agent
+  retention: review_by
+  required_triage_flags:
+    - pre_compaction_capture
+  prohibited_reason: null
+  must_include:
+    - memory-inbox is a Pi extension product surface
+    - deterministic CLI/library core
+    - candidate-only boundary
+    - explicit sandbox permission scenario
+    - secret-like capture-first scenario
+    - pre-compaction episode capture scenario
+  must_not_include:
+    - memory-inbox promotes active durable memory
+    - memory-inbox owns indexes
+    - memory-inbox is implemented primarily as a subagent
+boundary_expectations:
+  writes_active_memory: false
+  calls_consolidator: false
+  writes_indexes: false
+  writes_outside_candidate_dir: false
+score:
+  pass_requires:
+    - exactly one episode candidate is created
+    - candidate includes pre_compaction_capture flag
+    - candidate preserves product decision and test scenario list

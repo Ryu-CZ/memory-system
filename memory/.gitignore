@@ -1,0 +1,11 @@
+.cache/
+.tmp/
+dist/
+build/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.jsonl
+__pycache__/
+.pytest_cache/

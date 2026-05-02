@@ -1,0 +1,36 @@
+scenario_id: 002-secret-like-capture-first
+decision: write_candidate
+candidate:
+  status: needs_review
+  memory_type: project_context
+  scope: project:/home/trval/projects/chats/pi_sandbox
+  sensitivity: secret-prohibited
+  source: user_explicit
+  source_agent: main-agent
+  retention: indefinite
+  required_triage_flags:
+    - yolo_capture_first
+    - secret_like_literal
+    - requires_human_review
+  prohibited_reason: null
+  must_include:
+    - deployment token for later
+    - sk-test-1234567890abcdef1234567890abcdef
+    - captured for review
+  must_not_include:
+    - secret-like content was blocked
+    - original secret was not stored
+    - rejected_by_inbox
+    - blocked_no_file
+boundary_expectations:
+  writes_active_memory: false
+  calls_consolidator: false
+  writes_indexes: false
+  writes_outside_candidate_dir: false
+score:
+  pass_requires:
+    - exactly one candidate is created
+    - candidate is not rejected or blocked
+    - candidate is labeled secret-prohibited
+    - candidate includes yolo_capture_first and requires_human_review triage flags
+    - candidate is not promoted to active durable memory
