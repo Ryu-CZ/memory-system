@@ -9,3 +9,6 @@ build/
 *.jsonl
 __pycache__/
 .pytest_cache/
+
+# Candidate records (generated artifacts, rebuilt from memory-inbox)
+candidates/
