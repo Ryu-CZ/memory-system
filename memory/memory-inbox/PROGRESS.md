@@ -118,3 +118,7 @@ and command:
 ```
 
 If live extension loading works, next implement listing/review commands for candidate files.
+
+## Downstream: memory-consolidator
+
+`memory-consolidator` is planned (Gen1). See [`../memory-consolidator/PLAN-GEN1.md`](../memory-consolidator/PLAN-GEN1.md) for scope, schema, and implementation order.

@@ -59,13 +59,17 @@ What future task this could improve.
 - Performs initial validation of required conceptual metadata.
 - Classifies scope, sensitivity, source, retention, and triage flags for later review.
 - Hands candidate files to `memory-consolidator` without making durable promotion decisions.
+- **Never** promotes candidates into active durable memory.
+- **Never** writes indexes, embeddings, or database files.
 
 ### `memory-consolidator`
 
-- Reviews candidate Markdown records.
-- Promotes, merges, archives, or rejects candidates according to future policy.
-- Rebuilds caches and indexes from canonical Markdown.
-- Ensures generated artifacts are not treated as canonical memory.
+- Consumes candidate Markdown records from `memory/candidates/`.
+- Promotes, merges, archives, or rejects candidates according to policy.
+- Stores promoted memories in a durable backend (SQLite for Gen1).
+- Supports retrieval over accumulated memories.
+- Rebuilds storage from candidates if needed.
+- Ensures generated artifacts are rebuildable from candidates.
 
 ## Notes
 

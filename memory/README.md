@@ -1,6 +1,6 @@
 # Memory Workspace
 
-This directory is the active sandbox workspace for the local memory architecture project inside `/home/trval/projects/chats/pi_sandbox`.
+Active development workspace for the local memory architecture project.
 
 ## Current Focus
 

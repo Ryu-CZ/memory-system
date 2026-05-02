@@ -1,48 +1,39 @@
-# Pi Sandbox
+# Memory System
 
-This directory is fully owned by the agent for free experimentation, play, self-improvement, and safe pi/subagent experiments.
+Local-first agentic memory system for Pi. Captures candidate memory records, stores them in a durable backend, and supports retrieval.
 
-The user has explicitly allowed the agent to use this sandbox to explore, test workflows, create notes, build small examples, reorganize or delete throwaway files, and generally experiment in ways that may improve future work or just be fun.
+## Architecture
 
-## Boundaries
+```
+capture → memory-inbox → candidates/ → memory-consolidator → storage → retrieval
+```
 
-- Work freely inside this directory.
-- Destructive or messy experiments are acceptable inside this sandbox, unless the user gives a specific contrary instruction.
-- Keep experiments contained to this sandbox.
-- Do not write outside this sandbox unless the user explicitly asks or the action is clearly required and safe.
-- Prefer reversible, understandable changes when practical.
-- Record useful discoveries, workflows, and lessons learned here so future sessions can reuse them.
+**Current posture**: YOLO capture-first candidates now; consolidation/review later.
+
+## Components
+
+- [`memory/memory-inbox/`](memory/memory-inbox/) — **DONE**. Capture layer. Writes candidate Markdown records.
+- [`memory/memory-consolidator/`](memory/memory-consolidator/) — **PLANNED**. Storage + retrieval layer. Gen1 plan at [`PLAN-GEN1.md`](memory/memory-consolidator/PLAN-GEN1.md).
 
 ## Active Documentation
 
-Active memory-system development lives in:
+- [`memory/README.md`](memory/README.md) — memory workspace hub
+- [`memory/docs/design.md`](memory/docs/design.md) — high-level architecture
+- [`memory/docs/inbox-consolidator-contract.md`](memory/docs/inbox-consolidator-contract.md) — candidate handoff contract
+- [`memory/memory-inbox/README.md`](memory/memory-inbox/README.md) — memory-inbox entry point
+- [`memory/memory-consolidator/PLAN-GEN1.md`](memory/memory-consolidator/PLAN-GEN1.md) — Gen1 consolidator plan
 
-- [`memory/README.md`](memory/README.md)
-- [`memory/memory-inbox/README.md`](memory/memory-inbox/README.md)
+## Research & Tasks
 
-Current memory-inbox direction:
+- [`research/`](research/) — local agentic memory landscape analysis, critical review
+- [`tasks/`](tasks/) — active task specifications
 
-```text
-YOLO capture-first candidates now; consolidation/review later.
-```
+## Progress
 
-## Removed/Archived Notes
+| Component | Status | Tests |
+|---|---|---|
+| memory-inbox | ✅ Implemented | 13 passing |
+| memory-consolidator | 📋 Planned (Gen1) | — |
+| Pi extension adapter | ✅ Implemented | — |
 
-Broad memory research notes and early subagent experiment notes were removed from the active documentation surface so they do not pollute current development. Archive marker directories record that cleanup:
-
-- [`memory/docs/archive/`](memory/docs/archive/)
-- [`archive/2026-04-27-subagent-experiment/`](archive/2026-04-27-subagent-experiment/)
-
-Archive markers are not product requirements.
-
-## Local Pi Skill Docs
-
-The `.pi/skills/obsidian-notes/` directory is preserved as local skill documentation for Obsidian/vault workflows. It is useful reference material, not part of the active `memory-inbox` product spec.
-
-## Suggested Uses
-
-- Test pi features, extensions, skills, prompt templates, and subagents.
-- Create throwaway code projects or prototypes.
-- Maintain coordination notes for multi-agent experiments.
-- Try workflows that improve planning, review, validation, and delegation.
-- Have some fun while keeping the rest of the system safe.
+See [`PROGRESS.md`](PROGRESS.md) for detailed milestone tracking.
