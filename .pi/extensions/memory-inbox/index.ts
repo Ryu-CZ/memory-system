@@ -1,5 +1,5 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { Type } from "typebox";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { Type } from "@earendil-works/pi-ai";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import fs from "node:fs";
@@ -38,7 +38,7 @@ const CaptureParams = Type.Object({
   source: Type.Optional(Type.String({ description: "source metadata; default user_explicit" })),
   source_agent: Type.Optional(Type.String({ description: "source agent metadata; default extension:memory-inbox" })),
   memory_type: Type.Optional(Type.String({ description: "memory type; default project_context" })),
-  scope: Type.Optional(Type.String({ description: "scope; default project:/home/trval/projects/chats/pi_sandbox" })),
+  scope: Type.Optional(Type.String({ description: "scope; default project:memory-system" })),
   sensitivity: Type.Optional(Type.String({ description: "sensitivity; default ordinary" })),
   retention: Type.Optional(Type.String({ description: "retention; default session_only" })),
   triage_flags: Type.Optional(Type.Array(Type.String())),
